@@ -5,7 +5,7 @@ const mysql = require('mysql2')
 const dbwrite = mysql.createPool({
     host:"35.240.144.94",
     user:"root",
-    password:'plsdonthackme642',
+    password: 'password',
     port:3306,
     database:'statusdb'
     
