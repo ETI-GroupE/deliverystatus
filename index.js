@@ -69,7 +69,7 @@ app.get("/api/v1/status/:orderId/:productId",(req,res) =>{
     dbwrite.query("select * from orderstatus where orderId=? and productId=?",[orderId,productId],function(err,results){
         if (err || results.length==0) {
             res.status(400).end();
-            res.send(err)
+            //res.send(err)
         }else{
             res.json(results);
             res.status(200).end();
