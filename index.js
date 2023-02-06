@@ -90,7 +90,7 @@ app.put("/api/v1/status/:orderId/:productId/:statusid",(req,res) =>{
 
    
 
-   dbwrite.query("update orderstatus set statusId=?,statusName=?",[statusId,statusName],function(err,results){
+   dbwrite.query("update orderstatus set statusId=?,statusName=? where orderId=? and productId=?",[statusId,statusName,orderId,productId],function(err,results){
     if (err){
         res.status(400).end();
     }else{
