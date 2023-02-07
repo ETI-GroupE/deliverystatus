@@ -18,19 +18,19 @@ app.use(bodyParser.json());
 
 
 
-app.post("/api/v1/status/:orderId",(req,res)=>{
+app.post("/api/v1/status",(req,res)=>{
  /* example of post body from purchHist(test data) */
  
   
  const purchHistarray = req.body.data;
  purchHistarray.forEach(object => {
 
-    dbwrite.query("insert ignore into orderstatus values(?,?,?,?,?,?)",[1,"Order Placed",object.order_id,object.product_id,"",""],function(err,results){
+    dbwrite.query("insert ignore into orderstatus values(?,?,?,?,?,?)",[1,"Order Placed",object.order_id,object.product_id,"China","Singapore"],function(err,results){
         if (err){
              res.status(400).end();
         }else{
             res.status(200).end();
-            console.log("inserted into cartdiscount");
+            console.log("inserted into orderstatus");
         }
        
        }); 
