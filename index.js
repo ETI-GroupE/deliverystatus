@@ -20,35 +20,12 @@ app.use(bodyParser.json());
 
 app.post("/api/v1/status/:orderId",(req,res)=>{
  /* example of post body from purchHist(test data) */
- const purchHistarray=[
-   {
-    "order_id" : 1,
-    "user_id" : 1,
-    "final_price" : 120,
-    "quantity" : 1,
-    "product_id" : 3,
-    "status" : "",
-    "location" : ""
-
-   },
-   {
-    "order_id" : 1,
-    "user_id" : 1,
-    "final_price" : 120,
-    "quantity" : 3,
-    "product_id" : 6,
-    "status" : "",
-    "location" : ""
-
-   }
-
- ]
  
-
- //const purchHistarray = req.body.data;
+  
+ const purchHistarray = req.body.data;
  purchHistarray.forEach(object => {
 
-    dbwrite.query("insert into orderstatus values(?,?,?,?,?,?)",[1,"Order Placed",object.order_id,object.product_id,"",""],function(err,results){
+    dbwrite.query("insert ignore into orderstatus values(?,?,?,?,?,?)",[1,"Order Placed",object.order_id,object.product_id,"",""],function(err,results){
         if (err){
              res.status(400).end();
         }else{
