@@ -22,7 +22,7 @@ app.post("/api/v1/status",(req,res)=>{
  /* example of post body from purchHist(test data) */
  
   
- const purchHistarray = req.body.data;
+ const purchHistarray = req.body;
  purchHistarray.forEach(object => {
 
     dbwrite.query("insert ignore into orderstatus values(?,?,?,?,?,?)",[1,"Order Placed",object.order_id,object.product_id,"China","Singapore"],function(err,results){
